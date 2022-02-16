@@ -5,6 +5,9 @@ export const dropShadow: Filter = (context, offsetX: string, offsetY: string, bl
   // prepare a new temp canvas
   const shadowContext = document.createElement('canvas').getContext('2d');
 
+  shadowContext.canvas.width = context.canvas.width;
+  shadowContext.canvas.height = context.canvas.height;
+
   // normalize the params and apply to the temp context
   // be aware of different blur behavior in different browsers
   // s. https://github.com/fabricjs/fabric.js/issues/4402
