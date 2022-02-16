@@ -220,5 +220,39 @@
 
     </script>
 
+    <canvas class="clear" width="400px" height="200px"></canvas>
+    <script>
+      const ctxClear = document.querySelector('canvas.clear').getContext('2d');
+
+      ctxClear.filter = 'blur(4px) drop-shadow(2px 2px 10px red)';
+      ctxClear.font = '48px serif';
+      ctxClear.fillText('Hello world', 50, 80);
+
+      ctxClear.clearRect(0, 0, ctxClear.canvas.width / 2, ctxClear.canvas.height / 3);
+      ctxClear.clearRect(ctxClear.canvas.width / 2, ctxClear.canvas.height / 3, ctxClear.canvas.width / 2, ctxClear.canvas.height / 3);
+
+      ctxClear.font = '48px serif';
+      ctxClear.fillText('Hello world', 50, 130);
+    </script>
+
+
+    <canvas class="save" width="400px" height="200px"></canvas>
+    <script>
+      const ctxSave = document.querySelector('canvas.save').getContext('2d');
+
+      ctxSave.save();
+      ctxSave.filter = 'blur(4px) drop-shadow(2px 2px 10px red)';
+      ctxSave.font = '48px serif';
+      ctxSave.fillText('Hello world', 50, 80);
+      ctxSave.restore();
+
+
+      ctxSave.save();
+      ctxSave.font = '48px serif';
+      ctxSave.fillText('Hello world', 50, 130);
+      ctxSave.restore();
+
+    </script>
+
   </body>
 </html>

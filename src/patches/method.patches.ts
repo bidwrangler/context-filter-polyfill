@@ -19,6 +19,19 @@ export function applyMethodPatches(context: any) {
       const original = descriptor.value;
       Object.defineProperty(context.prototype, member, {
         value: function (...args) {
+          if (member === 'save') {
+            if (!this.__savedFilterStates) {
+              this.__savedFilterStates = [];
+            }
+            this.__savedFilterStates.push(this.filter);
+            return original.call(this, ...args);
+          }
+          if (member === 'restore') {
+            if (this.__savedFilterStates && this.__savedFilterStates.length) {
+              this.filter = this.__savedFilterStates.pop();
+            }
+            return original.call(this, ...args);
+          }
           // do not apply on mirror
           if (this.canvas.__skipFilterPatch || member === 'clearRect') {
             return original.call(this, ...args);
