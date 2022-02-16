@@ -20,7 +20,7 @@ export function applyMethodPatches(context: any) {
       Object.defineProperty(context.prototype, member, {
         value: function (...args) {
           // do not apply on mirror
-          if (this.canvas.__skipFilterPatch) {
+          if (this.canvas.__skipFilterPatch || member === 'clearRect') {
             return original.call(this, ...args);
           }
 
