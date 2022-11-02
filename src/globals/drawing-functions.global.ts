@@ -6,6 +6,7 @@ export const DRAWING_FUNCTIONS = [
   'clearRect',
   // 'clip',
   'drawImage',
+  'putImageData',
 
   'fill',
   'fillRect',

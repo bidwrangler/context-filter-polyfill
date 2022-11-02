@@ -42,6 +42,7 @@ function_ is called:
 
 * `clearRect`
 * `drawImage`
+* `putImageData`
 * `fill`
 * `fillRect`
 * `fillText`
