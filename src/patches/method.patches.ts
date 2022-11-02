@@ -17,6 +17,7 @@ export function applyMethodPatches(context: any) {
     // apply monkey-patch to pass through
     .forEach(({ member, descriptor }) => {
       const original = descriptor.value;
+      console.log('apply method on', member)
       Object.defineProperty(context.prototype, member, {
         value: function (...args) {
           if (member === 'save') {
