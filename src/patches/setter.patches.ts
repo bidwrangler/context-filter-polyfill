@@ -16,7 +16,6 @@ export function applySetterPatches(context: any) {
     .forEach(({ member, descriptor }) => {
       // overload setter
       const original = descriptor;
-      console.log('apply getter/setter on', member)
       Object.defineProperty(context.prototype, member, {
         get: function () {
           if (this.canvas.__skipFilterPatch) {
