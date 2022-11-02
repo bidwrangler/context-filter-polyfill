@@ -33,7 +33,7 @@ export function applyMethodPatches(context: any) {
             return original.call(this, ...args);
           }
           // do not apply on mirror
-          if (this.canvas.__skipFilterPatch || member === 'clearRect') {
+          if (this.canvas.__skipFilterPatch || member === 'clearRect' || member === 'putImageData') {
             return original.call(this, ...args);
           }
 
