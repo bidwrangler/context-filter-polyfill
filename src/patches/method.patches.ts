@@ -33,7 +33,7 @@ export function applyMethodPatches(context: any) {
             return original.call(this, ...args);
           }
           // do not apply on mirror
-          if (this.canvas.__skipFilterPatch || member === 'clearRect' || member === 'putImageData') {
+          if (this.canvas.__skipFilterPatch) {
             return original.call(this, ...args);
           }
 
@@ -67,7 +67,9 @@ export function applyMethodPatches(context: any) {
             }
             this.canvas.__skipFilterPatch = false;
 
-            // reset the mirror for next draw cycle
+            // cleanup and reset the mirror for next draw cycle
+            this.canvas.__currentPathMirror.canvas.width = 0
+            this.canvas.__currentPathMirror.canvas.height = 0
             this.canvas.__currentPathMirror = createOffscreenContext(this);
           }
 
